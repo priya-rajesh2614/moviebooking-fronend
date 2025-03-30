@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Loader from "../common/loader";
+import { useNavigate } from "react-router-dom";
 
 interface Movie {
   id: number;
@@ -14,7 +15,8 @@ const Movies: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-
+  const navigate = useNavigate(); 
+  
   useEffect(() => {
     axios
       .get("http://localhost:8080/movies")
@@ -27,10 +29,12 @@ const Movies: React.FC = () => {
         setLoading(false);
       });
   }, []);
+  
 
-  const handleBook = (movieTitle: string) => {
-    alert(`Booking for ${movieTitle}`);
+  const handleBook = (movieId: number) => {
+    navigate(`/movies/${movieId}/theaters`)
   };
+  
 
   return (
     <div className="container">
@@ -55,7 +59,7 @@ const Movies: React.FC = () => {
                   <p className="card-text">Duration: {movie.duration} mins</p>
                   <button
                     className="btn1"
-                    onClick={() => handleBook(movie.title)}
+                    onClick={() => handleBook(movie.id)}
                   >
                     Book
                   </button>
