@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Loader from "../common/loader";
 
 interface Theater {
@@ -16,6 +16,7 @@ const TheaterList: React.FC = () => {
   const [theaters, setTheaters] = useState<Theater[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate(); 
 
   useEffect(() => {
     axios
@@ -29,6 +30,11 @@ const TheaterList: React.FC = () => {
         setLoading(false);
       });
   }, []);
+
+
+const handleBook = (theaterId: number) => {
+    navigate(`${theaterId}/shows`)
+  };
 
   if (loading) return <Loader/>;
   if (error) return <p className="text-danger text-center mt-4">{error}</p>;
@@ -46,7 +52,7 @@ const TheaterList: React.FC = () => {
               <div className="card-body">
                 <h5 className="card-title">{theater.name}</h5>
                 <p className="card-text">{theater.location}</p>
-                <button className="btn1 w-100">Book Ticket</button>
+                <button className="btn1 w-100" onClick={() => handleBook(theater.id)}>Book Ticket</button>
               </div>
             </div>
           </div>
