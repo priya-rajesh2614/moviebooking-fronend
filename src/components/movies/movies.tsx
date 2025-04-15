@@ -3,6 +3,7 @@ import axios from "axios";
 import Loader from "../common/loader";
 import { useNavigate } from "react-router-dom";
 
+
 interface Movie {
   id: number;
   title: string;
@@ -19,7 +20,11 @@ const Movies: React.FC = () => {
   
   useEffect(() => {
     axios
-      .get("http://localhost:8080/movies")
+      .get("http://localhost:8080/movies",{
+        headers:{
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`
+        }
+      })
       .then((response) => {
         setMovies(response.data);
         setLoading(false);
@@ -34,13 +39,16 @@ const Movies: React.FC = () => {
   const handleBook = (movieId: number) => {
     navigate(`/movies/${movieId}/theaters`)
   };
-  
+  if(loading) return <Loader />
 
   return (
+    <>
+    <div className="m-0" style={{width:'100%'}}>
+     
     <div className="container">
       <h2 className="my-4">Recommended Movies</h2>
 
-      {loading && <Loader />}
+      
       {error && <p className="text-danger">{error}</p>}
 
       {!loading && !error && (
@@ -69,7 +77,11 @@ const Movies: React.FC = () => {
           ))}
         </div>
       )}
+      </div>
+      <br/>
+      
     </div>
+      </>
   );
 };
 
