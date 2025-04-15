@@ -20,7 +20,11 @@ const TheaterList: React.FC = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/movies/${movieId}/theaters`)
+      .get(`http://localhost:8080/movies/${movieId}/theaters`,{
+        headers:{
+          Authorization: `Bearer ${localStorage.getItem('authToken')}`
+        }
+      })
       .then((response) => {
         setTheaters(response.data);
         setLoading(false);
@@ -40,7 +44,7 @@ const handleBook = (theaterId: number) => {
   if (error) return <p className="text-danger text-center mt-4">{error}</p>;
   if (theaters.length==0) return <h2 className="text-danger text-center mt-4">🎬No Show Available......</h2>
   return (
-    
+    <>
 
     <div className="container">
       <h2 className="my-4 text-center">Available Theaters</h2>
@@ -59,6 +63,7 @@ const handleBook = (theaterId: number) => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 
