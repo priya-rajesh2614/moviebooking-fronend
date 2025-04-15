@@ -20,8 +20,8 @@ export default function LoginForm() {
         
         if (response.status === 200) {
           const token = response.data;  
-          localStorage.setItem("auth_token", token); 
-          navigate('/Home'); 
+          localStorage.setItem("authToken", token); 
+          navigate('/home'); 
         } else {
           alert('Login failed');
         }
