@@ -26,18 +26,13 @@ function Header() {
   const firstLetter = user?.username ? user.username.charAt(0).toUpperCase() : '';
 
 
-  const handleBook = () => {
-    navigate('/home')
-  };
 
   const handleBook1 = () => {
     navigate('/admin')
   };
 
   
-  const handleBook2 = () => {
-    navigate('/ticket')
-  };
+  
 
   const handleBooklogin = () => {
     localStorage.removeItem('authToken')
@@ -99,7 +94,6 @@ function Header() {
               BOOKITNOW
             </Typography>
 
-            {/* Mobile Menu */}
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
                 size="large"
@@ -133,7 +127,6 @@ function Header() {
               </Menu>
             </Box>
 
-            {/* Mobile Logo */}
             <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
             <Typography
               variant="h5"
@@ -162,7 +155,6 @@ function Header() {
               )}
             </Box>
 
-            {/* Avatar */}
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
               <>
