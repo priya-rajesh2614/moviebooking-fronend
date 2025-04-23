@@ -1,36 +1,41 @@
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import {  Route, Routes, useLocation } from 'react-router-dom'
+import Home from './components/home/home'
 import LoginForm from './components/login/login'
 import Register from './components/register/register'
-import Home from './components/home/home'
 
 import './App.css'
-import TheaterList from './components/thearters/theaters'
-import Showtimes from './components/shows/shows'
-import Seats from './components/seats/seats'
-import Payment from './components/payment/payment'
-import Ticket from './components/ticket/ticket'
 import Addmovie from './components/addmovie/addmovie'
-import AdminDashboard from './components/admin/admin'
-import AddTheater from './components/addtheater/addtheater'
 import AddShow from './components/addshow/addshow'
+import AddTheater from './components/addtheater/addtheater'
+import AdminDashboard from './components/admin/admin'
 import Footer from './components/footer/footer'
 import Header from './components/header/header'
+import Payment from './components/payment/payment'
+import Seats from './components/seats/seats'
+import Showtimes from './components/shows/shows'
+import TheaterList from './components/thearters/theaters'
+import Ticket from './components/ticket/ticket'
 import { UserProvider } from './components/usercontext/usercontext'
 
 
 
 function App() {
+  const location = useLocation();
+  const hideHeader = location.pathname === '/login';
+  const hideFooter = location.pathname === '/login';
   return (
-        <BrowserRouter>
         <UserProvider>
-        <Header/>
+        {!hideHeader && <Header/>}
+        
         <main>
+        
           <Routes>
+          <Route path='/login' element={<LoginForm/>}/>
+
             <Route path='/footer' element={<Footer/>}/>
             <Route path='/header' element={<Header/>}/>
             <Route path='/ticket' element={<Ticket/>}/>
-            <Route path='/login' element={<LoginForm/>}/>
             <Route path='/register' element={<Register/>}/>
             <Route path='/admin/add-movie' element={<Addmovie/>}/>
             <Route path='/home' element={<Home/>}/>
@@ -43,9 +48,9 @@ function App() {
             <Route path="/movies/:movieId/theaters/:theaterId/shows/:showId/seats" element={<Seats/>}/>
           </Routes>
           </main>
-        <Footer/>
+        {!hideFooter && <Footer/>}
+        
         </UserProvider>
-        </BrowserRouter>
   )
 }
 
