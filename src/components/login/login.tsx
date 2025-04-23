@@ -1,13 +1,11 @@
 import { Box, Button, Container, Link, Paper, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 export default function LoginForm() {
   const [userName, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [isFormSubmitted, setIsFormSubmitted] = useState<boolean>(false);
-  const navigate = useNavigate();
 
   const handleClick = async (): Promise<void> => {
     setIsFormSubmitted(true);
@@ -21,7 +19,7 @@ export default function LoginForm() {
         if (response.status === 200) {
           const token = response.data;  
           localStorage.setItem("authToken", token); 
-          navigate('/home'); 
+          window.location.href='/home';
         } else {
           alert('Login failed');
         }
