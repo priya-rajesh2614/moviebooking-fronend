@@ -21,6 +21,10 @@ function Header() {
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
   const navigate = useNavigate(); 
+  const { user } = React.useContext(UserContext);
+
+  const firstLetter = user?.username ? user.username.charAt(0).toUpperCase() : '';
+
 
   const handleBook = () => {
     navigate('/home')
@@ -35,7 +39,11 @@ function Header() {
     navigate('/ticket')
   };
 
-  const { user } = React.useContext(UserContext);
+  const handleBooklogin = () => {
+    localStorage.removeItem('authToken')
+    navigate('/login')
+  };
+
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -49,7 +57,7 @@ function Header() {
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    
   };
 
   return (
@@ -117,19 +125,11 @@ function Header() {
                 onClose={handleCloseNavMenu}
                 sx={{ display: { xs: 'block', md: 'none' } }}
               >
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Movies</Typography>
-                </MenuItem>
-
                 {user?.isAdmin && (
                   <MenuItem onClick={handleCloseNavMenu}>
                     <Typography textAlign="center">Admin</Typography>
                   </MenuItem>
                 )}
-
-                <MenuItem onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">Ticket</Typography>
-                </MenuItem>
               </Menu>
             </Box>
 
@@ -154,31 +154,24 @@ function Header() {
               LOGO
             </Typography>
 
-            {/* Desktop Menu */}
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button onClick={handleBook} sx={{ my: 2, color: 'white', display: 'block' }}>
-                Movies
-              </Button>
-
               {user?.isAdmin && (
                 <Button onClick={handleBook1} sx={{ my: 2, color: 'white', display: 'block' }}>
                   Admin
                 </Button>
               )}
-
-              <Button onClick={handleBook2} sx={{ my: 2, color: 'white', display: 'block' }}>
-                Ticket
-              </Button>
             </Box>
 
             {/* Avatar */}
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
-                <>
-                <span>Welcome {user?.username}</span>
-                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ml:1 }}>
-                  <Avatar alt="User" src="/static/images/avatar/2.jpg" />
-                </IconButton>
+              <>
+                  <span style={{ color: 'white', marginRight: '10px' }}>
+                    Welcome {user?.username}
+                  </span>
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ml: 1 }}>
+                    <Avatar alt={user?.username}>{firstLetter}</Avatar>
+                  </IconButton>
                 </>
               </Tooltip>
               <Menu
@@ -197,16 +190,8 @@ function Header() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Profile</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Account</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">Dashboard</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleCloseUserMenu}>
+                
+                <MenuItem onClick={handleBooklogin}>
                   <Typography textAlign="center">Logout</Typography>
                 </MenuItem>
               </Menu>
