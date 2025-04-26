@@ -42,7 +42,7 @@ const handleBook = (theaterId: number) => {
 
   if (loading) return <Loader/>;
   if (error) return <p className="text-danger text-center mt-4">{error}</p>;
-  if (theaters.length==0) return <h2 className="text-danger text-center mt-4">🎬No Show Available......</h2>
+  if (theaters.length==0) return <h2 className="text-danger text-center mt-4">🎬No Theaters Available......</h2>
   return (
     <>
 
