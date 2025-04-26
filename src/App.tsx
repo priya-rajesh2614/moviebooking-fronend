@@ -1,5 +1,5 @@
 
-import {  Route, Routes, useLocation } from 'react-router-dom'
+import {  Navigate, Route, Routes, useLocation } from 'react-router-dom'
 import Home from './components/home/home'
 import LoginForm from './components/login/login'
 import Register from './components/register/register'
@@ -17,13 +17,14 @@ import Showtimes from './components/shows/shows'
 import TheaterList from './components/thearters/theaters'
 import Ticket from './components/ticket/ticket'
 import { UserProvider } from './components/usercontext/usercontext'
+import ProtectedRoute from './components/ProtectedRoute'
 
 
 
 function App() {
   const location = useLocation();
-  const hideHeader = location.pathname === '/login';
-  const hideFooter = location.pathname === '/login';
+  const hideHeader = location.pathname === '/login' || location.pathname === '/register';
+  const hideFooter = location.pathname === '/login'  || location.pathname === '/register';
   return (
         <UserProvider>
         {!hideHeader && <Header/>}
@@ -31,21 +32,24 @@ function App() {
         <main>
         
           <Routes>
-          <Route path='/login' element={<LoginForm/>}/>
-
-            <Route path='/footer' element={<Footer/>}/>
-            <Route path='/header' element={<Header/>}/>
-            <Route path='/ticket' element={<Ticket/>}/>
+            <Route path='/' element={<Navigate to={'/home'}/>}/>
+            <Route path='/login' element={<LoginForm/>}/>
             <Route path='/register' element={<Register/>}/>
-            <Route path='/admin/add-movie' element={<Addmovie/>}/>
-            <Route path='/home' element={<Home/>}/>
-            <Route path='/admin/add-theater' element={<AddTheater/>}/>
-            <Route path="/admin/add-show" element={<AddShow />} />
-            <Route path='/admin' element={<AdminDashboard/>}/>
-            <Route path="/payment" element={<Payment/>} />
-            <Route path='/movies/:movieId/theaters' element={<TheaterList/>}/>
-            <Route path='/movies/:movieId/theaters/:theaterId/shows' element={<Showtimes/>}/>
-            <Route path="/movies/:movieId/theaters/:theaterId/shows/:showId/seats" element={<Seats/>}/>
+
+            <Route element={<ProtectedRoute  />}>
+              <Route path='/footer' element={<Footer/>}/>
+              <Route path='/header' element={<Header/>}/>
+              <Route path='/ticket' element={<Ticket/>}/>
+              <Route path='/admin/add-movie' element={<Addmovie/>}/>
+              <Route path='/home' element={<Home/>}/>
+              <Route path='/admin/add-theater' element={<AddTheater/>}/>
+              <Route path="/admin/add-show" element={<AddShow />} />
+              <Route path='/admin' element={<AdminDashboard/>}/>
+              <Route path="/payment" element={<Payment/>} />
+              <Route path='/movies/:movieId/theaters' element={<TheaterList/>}/>
+              <Route path='/movies/:movieId/theaters/:theaterId/shows' element={<Showtimes/>}/>
+              <Route path="/movies/:movieId/theaters/:theaterId/shows/:showId/seats" element={<Seats/>}/>
+            </Route>
           </Routes>
           </main>
         {!hideFooter && <Footer/>}
