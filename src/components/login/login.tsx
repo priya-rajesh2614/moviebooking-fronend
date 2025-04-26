@@ -1,6 +1,7 @@
-import { Box, Button, Container, Link, Paper, Stack, TextField, Typography } from "@mui/material";
+import { Box, Button, Container, Paper, Stack, TextField, Typography } from "@mui/material";
 import { useState } from "react";
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 export default function LoginForm() {
   const [userName, setUserName] = useState<string>("");
@@ -73,14 +74,14 @@ export default function LoginForm() {
             Login
           </Button>
           <br />
+          <div>
+           
           <Link
-            sx={{ color: "var(--theme-color)", cursor: "pointer", textAlign: "center", display: "block" }}
-            onClick={() => {
-              console.info("Redirecting to forgot password page...");
-            }}
+          to={'/register'}
           >
-            Forgot password?
+             Sign up
           </Link>
+          </div>
         </Stack>
       </Container>
     </Box>
