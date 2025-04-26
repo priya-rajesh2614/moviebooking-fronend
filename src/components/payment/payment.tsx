@@ -14,7 +14,7 @@ const Payment = () => {
     return <p>No seats selected. Please go back and select seats.</p>;
   }
 
-  const totalPrice = selectedSeats.length * 150; // ₹150 per seat
+  const totalPrice = selectedSeats.length * 150;
 
   const handlePayment = async () => {
     setIsProcessing(true);
@@ -31,7 +31,6 @@ const Payment = () => {
         })
         .then((response) => {
           
-          // setPayment(response.data);
           alert(`✅ Payment Successful!\nTransaction ID: ${response.data.transactionId}`);
           navigate("/ticket", { state: { seatNumbers, transactionId: response.data.transactionId } });
         })
