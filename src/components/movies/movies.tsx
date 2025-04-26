@@ -40,6 +40,7 @@ const Movies: React.FC = () => {
     navigate(`/movies/${movieId}/theaters`)
   };
   if(loading) return <Loader />
+  if (movies.length==0) return <h2 className="text-danger text-center mt-4">🎬No Movies Available......</h2>
 
   return (
     <>
