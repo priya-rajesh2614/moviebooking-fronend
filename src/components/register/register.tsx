@@ -21,7 +21,7 @@ export default function Register() {
           password,
         });
 
-        if (response.status === 200) {
+        if (response.status === 200&& response.data == "User registered successfully") {
           navigate('/login');
         } else {
           alert(`Registration failed: ${response.data}`);
