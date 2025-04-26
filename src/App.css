@@ -105,15 +105,9 @@
 }
     
 
-/*==================== 
-	Footer
-====================== */
-
-/* Main Footer */
 footer .main-footer{	padding: 20px 0;	background:    #fef4f9; }
 footer ul{	padding-left: 0;	list-style: none;}
 
-/* Copy Right Footer */
 .footer-copyright {	background: #DFE3EE;	padding: 5px 0;width: 100vw;}
 .footer-copyright .logo {    display: inherit;}
 .footer-copyright nav {    float: right;    margin-top: 5px;}
@@ -123,24 +117,17 @@ footer ul{	padding-left: 0;	list-style: none;}
 .footer-copyright nav ul li:first-child {	border: medium none;	padding-left: 0;}
 .footer-copyright p {	color: #969696;	margin: 2px 0 0;}
 
-/* Footer Top */
 .footer-top{	background: #DFE3EE;	padding-bottom: 30px;	margin-bottom: 30px;	border-bottom: 3px solid #222;}
 
-/* Footer transparent */
 footer.transparent .footer-top, footer.transparent .main-footer{	background: transparent;}
 footer.transparent .footer-copyright{	background: none repeat scroll 0 0 rgba(0, 0, 0, 0.3) ;}
 
-/* Footer light */
 footer.light .footer-top{	background: #f9f9f9;}
 footer.light .main-footer{	background: #f9f9f9;}
 footer.light .footer-copyright{	background: none repeat scroll 0 0 rgba(255, 255, 255, 0.3) ;}
 
-/* Footer 4 */
 .footer- .logo {    display: inline-block;}
 
-/*==================== 
-	Widgets 
-====================== */
 .widget{	padding: 20px;	margin-bottom: 40px;}
 .widget.widget-last{	margin-bottom: 0px;}
 .widget.no-box{	padding: 0;	background-color: transparent;	margin-bottom: 40px;
@@ -169,21 +156,6 @@ ul.social-footer2 {	margin: 0;padding: 0;	width: auto;}
 ul.social-footer2 li {display: inline-block;padding: 0;}
 ul.social-footer2 li a:hover {background-color:hwb(334 0% 66%);}
 ul.social-footer2 li a {display: block;	height:30px;width: 30px;text-align: center;}
-/* .btn{background-color: hwb(334 0% 66%); color:#060606;}
-.btn:hover, .btn:focus, .btn.active {background: #63022b;color: #fff;
--webkit-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
--moz-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
--ms-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
--o-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
--webkit-transition: all 250ms ease-in-out 0s;
--moz-transition: all 250ms ease-in-out 0s;
--ms-transition: all 250ms ease-in-out 0s;
--o-transition: all 250ms ease-in-out 0s;
-transition: all 250ms ease-in-out 0s;
-
-
-} */
 
 main{
   padding-top: 100px;
@@ -191,4 +163,7 @@ main{
   padding-bottom: 100px;
   display: flex;
   justify-content: center;
+}
+.card-width{
+  width: 400px;
 }
