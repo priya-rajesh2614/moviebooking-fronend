@@ -23,15 +23,15 @@ const AddMovie = () => {
   };
 
   return (
-    <div className="card  mt-4">
+    <div className="card card-width mt-4">
       <h3>Add Movie</h3>
-      <input className="form-control my-2" name="title" placeholder="Title" onChange={handleChange} />
+      <input className="form-control  my-2" name="title" placeholder="Title" onChange={handleChange} />
       <input className="form-control my-2" name="genre" placeholder="Genre" onChange={handleChange} />
       <input className="form-control my-2" name="language" placeholder="Language" onChange={handleChange} />
       <input className="form-control my-2" name="duration" placeholder="Duration (min)" onChange={handleChange} />
       <textarea className="form-control my-2" name="description" placeholder="Description" onChange={handleChange} />
       <input className="form-control my-2" name="imageUrl" placeholder="Image URL" onChange={handleChange} />
-      <button className="btn1 mt-2" style={{width:"200px"}}  onClick={handleSubmit}>Add Movie</button>
+      <button className="btn1 mt-2" style={{width:"338px"}}  onClick={handleSubmit}>Add Movie</button>
     </div>
   );
 };
