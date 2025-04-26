@@ -22,6 +22,8 @@ export default function Showtimes() {
       .then((data) => setShows(data));
   }, [movieId, theaterId]);
   
+  if (shows.length==0) return <h2 className="text-danger text-center mt-4">🎬No Show Available......</h2>
+
   return (
     <div>
       <h2>Showtimes</h2>
