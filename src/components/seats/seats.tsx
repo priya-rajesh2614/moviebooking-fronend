@@ -81,7 +81,7 @@ const Seats = () => {
             className="seat-button  m-1"
             style={{
               backgroundColor: seat.isBooked
-                ? "red"
+                ? "silver"
                 : selectedSeats.includes(seat.id)
                 ? "blue"
                 : "green",
