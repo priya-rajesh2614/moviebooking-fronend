@@ -23,7 +23,7 @@ const AddMovie = () => {
   };
 
   return (
-    <div className="card card-width mt-4">
+    <div className="card2 card-width mt-4">
       <h3>Add Movie</h3>
       <input className="form-control  my-2" name="title" placeholder="Title" onChange={handleChange} />
       <input className="form-control my-2" name="genre" placeholder="Genre" onChange={handleChange} />

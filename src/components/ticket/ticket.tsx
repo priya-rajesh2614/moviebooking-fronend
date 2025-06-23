@@ -16,7 +16,7 @@ export default function Ticket(){
     };
 
     return(
-        <div className="card" style={{textAlign:"center",fontFamily:"Arial",marginTop:"40px"}}>
+        <div className="card2" style={{textAlign:"center",fontFamily:"Arial",marginTop:"40px"}}>
             <h2>🎟️ Ticket Confirmed</h2>
             <p><strong>Transaction Id:</strong>{transactionId}</p>
             <p><strong>Seats:</strong>{seatNumbers.join(", ")}</p>

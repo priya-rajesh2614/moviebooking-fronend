@@ -20,7 +20,7 @@ const AddTheater = () => {
   };
 
   return (
-    <div className="card card-width mt-4">
+    <div className="card1 card-width mt-4">
       <h3>Add Theater</h3>
       <input className="form-control my-2" name="name" placeholder="Name" onChange={handleChange} />
       <input className="form-control my-2" name="location" placeholder="Location" onChange={handleChange} />

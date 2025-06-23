@@ -34,10 +34,10 @@ export default function LoginForm() {
   };
 
   return (
-    <Box sx={{ justifyContent: "center", display: "flex", flexDirection: "column", height: "100vh" }}>
+    <Box sx={{ justifyContent: "center", display: "flex", flexDirection: "column", height: "300px" ,  boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px"}}>
       <Container
         component={Paper}
-        sx={{ padding: "50px", background: "white", width: "400px", height: "60%" }}
+        sx={{ padding: "50px", background: "white", width: "400px" }}
       >
         <Stack>
           <Typography variant="h5" component="h6" sx={{ textAlign: "center" }}>
@@ -47,7 +47,7 @@ export default function LoginForm() {
           <TextField
             error={isFormSubmitted && !userName}
             type="text"
-            label="UserName"
+            label="Email"
             value={userName}
             helperText={isFormSubmitted && !userName ? "Please Enter UserName" : ""}
             onChange={(event) => setUserName(event.target.value)}

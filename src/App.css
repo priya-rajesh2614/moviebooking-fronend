@@ -39,6 +39,19 @@
 }
 .card {
   padding: 2em;
+      height: 650px;
+  border-width: 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card1 {
+  padding: 2em;
+      height: 300px;
+  border-width: 0px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card2 {
+  padding: 2em;
+      height: 460px;
   border-width: 0px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
@@ -167,3 +180,21 @@ main{
 .card-width{
   width: 400px;
 }
+.datetime-wrapper {
+    position: relative;
+    /* display: inline-block; */
+  }
+
+  .datetime-wrapper input[type="datetime-local"] {
+    padding-right: 30px;
+  }
+
+  .datetime-wrapper .icon {
+    position: absolute;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 20px;
+    color: gray;
+  }

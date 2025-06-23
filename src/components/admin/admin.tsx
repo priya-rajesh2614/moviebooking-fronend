@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 const AdminDashboard = () => {
   return (
     <div className=" card mt-5 text-center" style={{justifyContent: 'center',
-      display: 'flex',flexDirection:"column",width:"400px"}}>
+      display: 'flex',flexDirection:"column",width:"400px",height:'300px'}}>
       <h2 className="mb-4">Admin Panel</h2>
       <div className="d-grid gap-3" style={{
     width: '200px',
+    
     justifyContent: 'center',
     display: 'flex',
     marginLeft: '65px'
